@@ -22,9 +22,9 @@ export class AppController {
     return tarsasjatekRepo.find();
   }
   @Delete('/tarsasjatek/:id')
-  deleteTarsasjatek(@Param('id') id: number){
+  async deleteTarsasjatek(@Param('id') id: number){
     const tarsasjatekRepo = this.dataSource.getRepository(Tarsasjatek);
-    tarsasjatekRepo.delete(id);
+    await tarsasjatekRepo.delete(id);
   }
   @Post('/tarsasjatek')
   async newTarsasjatek(@Body() tarsasjatek: NewTarsasjatekDto){
